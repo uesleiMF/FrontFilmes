@@ -1,0 +1,79 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: rgb(32, 31, 31);
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    margin: 3px 3px 2px 3px;
+}
+
+card-body {
+    display: none;
+  } 
+  
+  .card:hover .card-body{
+    display: block;
+    position: absolute;
+    bottom: -175px;
+    background-color: rgb(32, 31, 31);
+    border: 1px solid rgba(44, 48, 241, 0.125);
+      padding: 0;
+  }
+  
+  .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      background-color: rgb(32, 31, 31);
+      background-clip: border-box;
+      border: 1px solid rgba(0,0,0,.125);
+      border-radius: 0.25rem;
+      margin: 3px 3px 2px 3px;
+  }
+  
+  .text-c {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      color: rgb(224, 222, 218);
+      padding: 1rem;
+      margin: 0 0 0 3.2%;
+      font-size: 1.3rem;
+  
+  }
+  
+  .card-all {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      margin-bottom: 80px;
+      margin-top: -17px;
+  }
+  
+  .card:hover {
+      transition: 0.8s ease-out;
+      transform: scale(1.15);
+      bottom: 10px;
+      z-index: 1;
+  }
+  
+  .card-title {
+      margin-bottom: 1rem;
+      color: rgb(240, 238, 235);
+      font-size: 1.03rem;
+      margin-left: 1rem;
+  }
+  
+  .card-text {
+      color: rgb(240, 238, 235);
+      margin: 0;
+      font-size: 0.9rem;
+      margin-left: 1rem;  
+  }
