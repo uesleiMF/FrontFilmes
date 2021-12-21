@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import Navbar from '../../components/Navbar/Navbar';
-import Frame from '../../components/Frame/Frame';
 import Card from '../../components/Card/Card';
 import Footer from '../../components/Footer/Footer';
 
