@@ -1,16 +1,18 @@
 .frame {
   
-  width: 100vw;
-  height: 50vh;
+  width: 50%;
+  height: 30%;
+ 
 
   &__image {
-    width: 100vw;
-    height: 50vh;
-    opacity: 0.6;
+    width: 10%;
+    height: 30%;
+    background-color:rgb(206, 192, 69);
+    
   }
 
   &__title {
-    background-color: #ffffff;
+    
     padding: 0.5rem;
     border-radius: 0.4rem;
     position: absolute;
