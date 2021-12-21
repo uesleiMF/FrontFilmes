@@ -1,62 +1,52 @@
 .navbar {
-  background-color: #212529;
-  box-shadow: 0 0 1rem #7c535336;
+  background-color: #0d1f17;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.6rem 4rem;
+  padding: 0 1.5rem;
 
-  .navbar__right {
-    display: flex;
-    align-items: center;
-
-    &__logo {
-      width: 160px;
-      height: 50px;
-    }
-
-    &__links {
-      display: flex;
-      margin-left: 3rem;
-
-      &__itens {
-        margin: 0.4rem;
-        list-style: none;
-      }
-
-      &__text {
-        color: #ffffff;
-        font-size: 1em;
-        font-weight: 800;
-        text-decoration: none;
-      }
-
-      &__text:hover {
-        color: #adb5bd;
-        transition: color 0.4s;
-      }
-    }
+  &__logo {
+    color: #ffffff;
+    font-size: 1.8em;
   }
 
-  .navbar__left {
+  &__links {
     display: flex;
-    align-items: center;
+
+    &__items {
+      color: #ffffff;
+      text-decoration: none;
+      list-style: none;
+      margin: 0 0.4rem;
+      padding: 1rem 0.2rem;
+    }
+
+    &__items:hover {
+      background-color: #ffffff23;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar {
+    flex-direction: column;
 
     &__links {
       display: flex;
-
-      &__itens {
-        list-style: none;
+      flex-direction: column;
+  
+      &__items {
+        text-align: center;
       }
-
-      &__icons {
-        color: white;
-        text-decoration: none;
-      }
-
-      &__icons:hover {
-        color: #adb5bd;
-        transition: color 0.4s;
+  
+      &__items:hover {
+        background-color: #ffffff23;
       }
     }
   }

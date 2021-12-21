@@ -1,21 +1,19 @@
 import './Card.scss';
-import { UseNavigate } from 'react-router-dom';
 
-const Card = (props) => {
-    const navigate = UseNavigate();
+import { useNavigate } from 'react-router-dom';
 
-    const goFilme = () => {
-        navigate('/filme', { state: props.id })
-    }
+export default function Card(props) {
 
-    return (
-        <div className='container'>
-            <div className='card' onClick={goFilme}>
-                <img src={props.img} alt={props.name} />
-                <span>{props.name}</span>
-            </div>
-        </div>
-    )
+  const navigate = useNavigate();
+
+  const vaParaPlanta = () => {
+    navigate('/plant', { state: props.id })
+  }
+
+  return (
+    <div className='card' onClick={vaParaPlanta}>
+      <img src={props.image} alt={props.name} />
+      <span>{props.name}</span>
+    </div>
+  )
 }
-
-export default Card;

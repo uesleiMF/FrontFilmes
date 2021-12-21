@@ -1,26 +1,32 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './index.css';
-import Home from './Pages/Home/Home';
-import Filme from './Pages/Filme/Filme';
-import Login from './Pages/Login/Login';
-import Navbar from './components/Navbar/Navbar';
 
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Plant from './pages/Plant/Plant';
+import Cadastrar from './pages/Cadastrar/Cadastrar';
+import Browse from './pages/Browse/Browse';
+
+import axios from 'axios';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import './index.css';
+
+axios.defaults.baseURL = 'https://plants-api-1.herokuapp.com/';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/filme" element={<Filme />} />   
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastrar" element={<Cadastrar />} />
+        <Route path="/browse" element={<Browse />} />
+        <Route path="/plant" element={<Plant />} />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-
