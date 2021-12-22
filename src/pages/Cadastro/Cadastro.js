@@ -1,39 +1,89 @@
-import './Cadastrar.scss';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import './Cadastro.scss';
 import { Link } from 'react-router-dom';
-import { useNavigate} from 'react-router-dom';
 import logo from '../../img/logo.jpg';
 
-const Cadastrar = () => {
 
-    let navigate = useNavigate();
 
-    const handleSubmit = async evento => {
-        evento.preventDefault();
 
-        const name = evento.target.name.value;
-        const email = evento.target.email.value;
-        const birthdate = evento.target.birthdate.value;
-        const imageUrl = evento.target.imageUrl.value
-        const password = evento.target.password.value;
-        const passwordConfirmation = evento.target.passwordconfirmacao.value;
 
-        const user = {
-            name,
-            email: email.toUpperCase(),
-            birthdate,
-            imageUrl,
-            password,
-            passwordConfirmation,
-        };
 
-        axios.post('/user/create', user).then((response) => {
-            navigate('/browse')
-        })
+const Cadastro = () => {
+  const navigate = useNavigate();
+
+  
+
+  const handleSubmit = async (evento) => {
+    evento.preventDefault();
+    const name = evento.target.name.value;
+    const email = evento.target.email.value;
+    const birthdate = evento.target.birthdate.value;
+    const password = evento.target.password.value;
+    const passwordConfirmation = evento.target.passwordConfirmation.value;
+    const imageUrl = evento.target.imageUrl.value;
+
+    if (name.length < 3) {
+      toast.error(`no mínimo 3 caracteres`, {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: 0,
+      });
+      return;
+    }
+
+    if (password !== passwordConfirmation) {
+        toast.error(`senhas diferentes!`, {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: 0,
+        });
+        return;
+      }
+
+    const newUser = {
+      name,
+      email,
+      birthdate,
+      password,
+      passwordConfirmation,
+      imageUrl,
     };
+    axios
+      .post("/user/create", newUser)
+      .then((response) => {
+        toast.success('Usuário criado com sucesso', {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+            });
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
 
-    return (
-        <div className='cadastrar'>
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
+  };
+
+  
+  return (
+    <div className='cadastrar'>
             <div className='cadastrar__background'>
                 <div className='cadastrar__navbar'>
                     <img className='cadastrar__logo' src={ logo }  title= 'CineFilmes' alt='Logo CineFilmes' />
@@ -102,5 +152,4 @@ const Cadastrar = () => {
         </div>
     )
 }
-
-export default Cadastrar;
+export default Cadastro;

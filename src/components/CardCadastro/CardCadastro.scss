@@ -1,38 +1,37 @@
-.login{
+.cardcadastro{
 
-    &__background {
       width: 100vw;
       height:auto;
-      background-color: black;
+      background-color: #ff0000;
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;
-  }
   
+
   &__navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background-image: blue;
-      height: 60px;
-      padding: 5px;
+      height: 100%;
+      padding: 500px;
+      width: 100px;
   }
-  
+
   &__logo {
       width: 100px;
       height: 50px;
     }
-  
+
     &__links {
       display: flex;
       margin-left: 3rem;
       align-items: center;
-  
+
       &__itens {
         margin: 0.4rem;
         list-style: none;
       }
-  
+
       &__text {
         display: flex;
         color: #ffffff;
@@ -42,18 +41,18 @@
         padding: 0.5rem 1.5rem;
         border-radius: 0.3rem;
       }
-  
+
       &__text:hover {
           transform: scale(1.05);
           transition: transform 0.4s;
       }
   }
-  
+
   &__background__bottom {
     height:100vh;
-    background-image: white;
+    background-image: linear-gradient(rgba(12, 11, 11, 0.288), rgba(12, 11, 11, 0.479),  rgba(12, 11, 11, 0.589), rgba(12, 11, 11, 0.603), rgba(12, 11, 11, 0.815), rgba(12, 11, 11, 0.904));
   }
-  
+
   &__text {
       display: flex;
       justify-content: center;
@@ -62,8 +61,8 @@
       text-align: center;
       padding-top: 1.5rem;
     }
-  
-    &__cadastrar {
+
+    &__cadastra {
       margin: auto;
       margin-top: 3rem;
       display: flex;
@@ -73,7 +72,7 @@
       padding: 2px;
       background-color: rgba(9, 216, 216, 0.671);
       border-radius: 26px;
-  
+
       &__form {
         width: 300px;
         height: 30px;
@@ -84,13 +83,13 @@
         margin: 0.6rem;
         outline: 0;
       }
-  
+
       &__titulo {
         color: white;
         padding: 0.4rem;
-  
+
       }
-  
+
       &__button {
         color: white;
         width: 2Opx;
@@ -102,10 +101,10 @@
         margin: 2rem;
         outline: 0;
       }
-  
+
       &__button:hover {
         transform: scale(1.05);
         transition: transform 0.4s;
       }
     } 
-  }
+}

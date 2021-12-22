@@ -1,32 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
-import Login from './pages/Login/Login';
-import Plant from './pages/Plant/Plant';
-import Cadastrar from './pages/Cadastrar/Cadastrar';
-import Browse from './pages/Browse/Browse';
+import Cadastro from './pages/Cadastro/Cadastro';
+import List from './pages/List/List';
+import Profile from './pages/Profile/Profile';
+import Movie from './pages/Movie/Movie';
+import Footer from './components/Footer/Footer';
+import Login from './components/Login/Login';
 
-import axios from 'axios';
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-import './index.css';
-
-axios.defaults.baseURL = 'https://plants-api-1.herokuapp.com/';
+axios.defaults.baseURL = 'https://streaming-api-1.herokuapp.com/';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 ReactDOM.render(
   <React.StrictMode>
+<ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+      />
+      
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastrar" element={<Cadastrar />} />
-        <Route path="/browse" element={<Browse />} />
-        <Route path="/plant" element={<Plant />} />
-      </Routes>
+    <Routes>
+
+    <Route path="/" element={<Home />} />
+    <Route path="/cadastro" element={<Cadastro />} />
+    <Route path="/list" element={<List />} />
+    <Route path="/profile" element={<Profile />} />
+    <Route path="/movie" element={<Movie />} />
+    <Route path="/login" element={<Login />} />
+    
+    
+    </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
+    <Footer/>
+    </React.StrictMode>,
   document.getElementById('root')
 );

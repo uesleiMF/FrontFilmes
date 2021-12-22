@@ -1,38 +1,45 @@
-import { useState, useEffect } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+import React, { useState, useEffect } from 'react'
+import Carousel from 'react-bootstrap/Carousel'
 import Navbar from '../../components/Navbar/Navbar';
-import Card from '../../components/Card/Card';
-import Footer from '../../components/Footer/Footer';
-
-import axios from 'axios';
-
 import './Home.scss';
+import axios from 'axios';
+import CardCadastro from '../../components/CardCadastro/CardCadastro'
 
-export default function Home() {
+const Home = () => {
 
-  const [plantas, setPlantas] = useState([]);
-  const [montado, setMontado] = useState(false);
+  const [filmes, setFilmes] = useState([]);
+  const [mount, setMount] = useState(false);
 
-  const getPlantas = async () => {
-    await axios.get('/plant/findMany')
-    .then(response => {
-      if(montado) {
-        setPlantas(response.data);
+  const shuffleArray = (array) => {
+      let i = array.length - 1;
+      for (; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
       }
-    })
-  }
+  
+      return array.slice(0, 5);
+    };
+  
+    useEffect(() => {
+      setMount(true);
+      listFilmes();
+    }, [mount]);
+  
 
-  useEffect(() => {
-    setMontado(true)
-    getPlantas()
-  }, [montado])
+  const listFilmes = async () => {
+    await axios.get("/movie/findMany").then((response) => {
+      if (mount) {
+        setFilmes(response.data);
+        }
+    });
+  };
 
   return(
     <div className='home'>
       <Navbar />
-    
-        
-      
+         
         <Carousel>
         <Carousel.Item>
           <img
@@ -77,20 +84,21 @@ export default function Home() {
         </Carousel.Item>
       </Carousel>
    
-
+  
+   
+  
       <div className='home__cards'>
-        {
-          plantas.map(item => (
-            <Card
-              id={item.id}
-              image={item.imageUrl}
-              name={item.commonName}
+          { shuffleArray(filmes).map((item) => (
+            <CardCadastro
+              titulo={item.title}
+              imagem={item.cover}
               key={item.id}
             />
-          ))
-        }
-      </div>
-      <Footer />
-    </div>
+          ))}
+        </div>
+</div>
+  
   )
 }
+
+export default Home
